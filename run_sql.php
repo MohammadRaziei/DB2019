@@ -22,16 +22,28 @@ echo "Connected successfully";
 
 <?php
 
+//// Name of the file
+//$filename = 'sql.sql';
+//// MySQL host
+//$mysql_host = 'localhost';
+//// MySQL username
+//$mysql_username = 'root';
+//// MySQL password
+//$mysql_password = '';
+//// Database name
+//$mysql_database = 'db2019';
+
+//session_start();
 // Name of the file
-$filename = 'sql.sql';
+$filename = $_session['filename'];
 // MySQL host
-$mysql_host = 'localhost';
+$mysql_host = $_session['mysql_host'];
 // MySQL username
-$mysql_username = 'root';
+$mysql_username = $_session['mysql_username'];
 // MySQL password
-$mysql_password = '';
+$mysql_password = $_session['mysql_password'];
 // Database name
-$mysql_database = 'db2019';
+$mysql_database = $_session['mysql_database'];
 
 // Connect to MySQL server
 $conn = @new mysqli($mysql_host,$mysql_username,$mysql_password,$mysql_database);
@@ -58,7 +70,8 @@ try {
         // If it has a semicolon at the end, it's the end of the query
         if ((substr(trim($line), -1, 1) == ';') or ++$i == $numline ){
             // Perform the query
-            $conn->query($templine) or print('Error performing query \'<strong>' . $templine . '\': ' . $conn->error() . '<br /><br />');
+            $conn->query($templine);
+//            $conn->query($templine) or print('Error performing query \'<strong>' . $templine . '\': ' . $conn->error() . '<br /><br />');
             // Reset temp variable to empty
             $templine = '';
         }
