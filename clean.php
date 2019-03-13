@@ -9,5 +9,6 @@ if ($conn->connect_errno) {
 $conn->query('DROP DATABASE db2019;') or print('Error performing query \'<strong>' .'DROP DATABASE db2019;' . '\': ' . $conn->error() . '<br /><br />');
 $conn->query('CREATE DATABASE db2019;') or print('Error performing query \'<strong>' . 'CREATE DATABASE db2019;' . '\': ' . $conn->error() . '<br /><br />');
 //$conn->query('USE DATABASE db2019;') or print('Error performing query \'<strong>' . 'USE DATABASE db2019;' . '\': ' . $conn->error() . '<br /><br />');
+header('Location: .');
 
 ?>
