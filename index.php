@@ -1,12 +1,14 @@
-<?php
-//session_unset();
-?>
 <html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+	<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+	<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+	<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+	  
     <title>Document</title>
 	<script>
 	//window.location = window.location.href.split("#")[0];
@@ -21,6 +23,9 @@
 		</script>';
 		}
 	?>
+	<style>
+		*{box-sizing : border-box;}
+	</style>
 </head>
 <!--<body onreload="window.location = window.location.pathname;">-->
 <body>
@@ -53,14 +58,36 @@
 
 
 ?>
+<?php /*
 <strong>Test Form</strong>
 <form action="" method="post">
-<input type="text" value="<?php echo $filename; /*or echo($default_file)*/ ;?>" name="filename"/>
+<input type="text" value="<?php echo $filename;?>" name="filename"/>
 <input type="submit" name="run" value="run" />
 </form>
 <form action="clean.php" method="post">
 <input type="submit" name="clean" value="clean" />
 </form>
+*/
+?>
+  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+    <div class="col-sm-3 col-md-3">
+        <form class="navbar-form" action="" method="post">
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="filename" value="<?php echo $filename;?>" name="filename"/>
+            <div class="input-group-btn" style="heigth : 10px;">
+                <button name="run" class="btn btn-success" type="submit"><i class="glyphicon glyphicon-share"></i></button>
+            </div>
+        </div>
+        </form>
+
+	
+
+  </div><!-- /.navbar-collapse -->
+   <form action="clean.php" method="post">
+	<input type="submit" class="btn btn-danger" name="clean" value="clean" />
+	</form>
+</div>
 
 
 <?php
@@ -77,7 +104,7 @@ if(!file_exists($prefix.file_get_contents($cashed))) {
 		die("Your file doesn't exist.");
 	}
 
-echo "<strong>".$submit."<br/>". $prefix.$filename."</strong><br/>";?>
+//echo "<strong>".$submit."<br/>". $prefix.$filename."</strong><br/>";?>
 
 </body>
 <script>
@@ -96,8 +123,7 @@ $_session['mysql_username'] = 'root';
 $_session['mysql_password'] = '';
 // Database name
 $_session['mysql_database'] = 'db2019';
-echo "<strong>".$submit."<br/>". $prefix.$filename."</strong><br/>";
-$i = 0;
+//echo "<strong>".$submit."<br/>". $prefix.$filename."</strong><br/>";
 if($submit) {
 	$submit = 0;
     include('run_sql.php');
