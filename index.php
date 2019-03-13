@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <html>
 <head>
     <meta charset="UTF-8">
@@ -11,14 +15,14 @@
 
 <strong>Test Form</strong>
 <form action="" method="post">
-<input type="text" name="picturenum"/>
+<input type="text" name="picturenum" <?php if(isset($_session['filename'])) echo 'value="'.$_session['filename'].'"'; ?>/>
 <input type="submit" name="Submit" value="Submit!" />
 </form>
 
 
 <?php
 
-session_start();
+// session_start();
 //$_session['picturenum'] = 'test';
 //$test = $_POST['submit'];
 if (isset($_POST['Submit'])) {
