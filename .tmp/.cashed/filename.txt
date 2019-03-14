@@ -1,1 +1,1 @@
-test.sql
+sql.sql

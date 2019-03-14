@@ -25,6 +25,42 @@
 	?>
 	<style>
 		*{box-sizing : border-box;}
+		.pre2{
+			overflow:auto;
+			font-family:monospace,monospace;font-size:1em;
+			border:1px solid #999;page-break-inside:avoid;
+			font-family:Menlo,Monaco,Consolas,"Courier New",monospace;
+			
+			display:block;
+			padding:9.5px;
+			margin:0 0 10px;
+			font-size:13px;
+			line-height:1.42857143;
+			color:#333;
+			word-break:break-all;
+			word-wrap:break-word;
+			background-color:#f5f5f5;
+			border:1px solid #ccc;
+			border-radius:4px;
+			font-size:inherit;
+			color:inherit;
+			white-space:pre-wrap;
+		}
+		
+		.pre{
+			overflow:auto;
+			border:1px solid #999;page-break-inside:avoid;
+			line-height:1.42857143;
+			color:#333;
+
+			font-family:monospace,monospace;font-size:1em;
+			display:block;
+			padding:20px 9.5px ;
+			margin:0 0 10px;
+			background-color:#f5f5f5;
+			border:1px solid #ccc;
+			border-radius:4px;
+		}
 	</style>
 </head>
 <!--<body onreload="window.location = window.location.pathname;">-->
@@ -43,7 +79,7 @@
 	$cashed = '.tmp/.cashed/filename.txt';
 	$submit = 0;
 	if (!file_exists($cashed) or !file_exists($prefix.file_get_contents($cashed))) {
-		echo('not exist');
+		//echo('not exist');
 		file_put_contents($cashed, $default_file);
 		$filename = $default_file;
 	}
@@ -69,10 +105,16 @@
 </form>
 */
 ?>
-  <div class="collapse navbar-collapse" >
 
-    <div class="col-sm-3 col-md-3">
-        <form class="navbar-form" action="" method="post">
+
+  <!--<div class="collapse navbar-collapse" >-->
+  <div class='container'>
+  <div class='row'>
+  	<h2 style = "margin-left : 20px;"> hi </h2>
+
+    <div class="col-sm-8 col-md-5  col-lg-5">
+
+		<form class="form" action="" method="post">
         <div class="input-group">
             <input type="text" class="form-control" placeholder="filename" value="<?php echo $filename;?>" name="filename"/>
             <div class="input-group-btn" style="heigth : 10px;">
@@ -81,14 +123,14 @@
         </div>
         </form>
 
-		<form style="margin-left: 15px;" action="clean.php" method="post">
+		<form action="clean.php" method="post">
 			<input type="submit" class="btn btn-danger" name="clean" value="clean" />
 		</form>
 	
 
 
 
-		<p style = "margin-top : 20px;margin-left : 15px;">
+		<p class="pre" style = "margin-top : 20px;">
 			<?php
 			/*
 			$submit = 0;
@@ -100,7 +142,8 @@
 			}*/
 			$_POST = array();
 			if(!file_exists($prefix.file_get_contents($cashed))) {
-					die("Your file doesn't exist.");
+					echo("Your file doesn't exist.");
+					die();
 				}
 
 			//echo "<strong>".$submit."<br/>". $prefix.$filename."</strong><br/>";?>
@@ -136,6 +179,7 @@
 		</p>
 
 	</div><!-- /.navbar-collapse -->
+	</div>
 </div>
 
 </body>
