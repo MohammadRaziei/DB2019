@@ -69,7 +69,7 @@
 </form>
 */
 ?>
-  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+  <div class="collapse navbar-collapse" >
 
     <div class="col-sm-3 col-md-3">
         <form class="navbar-form" action="" method="post">
@@ -81,61 +81,63 @@
         </div>
         </form>
 
+		<form style="margin-left: 15px;" action="clean.php" method="post">
+			<input type="submit" class="btn btn-danger" name="clean" value="clean" />
+		</form>
 	
 
-  </div><!-- /.navbar-collapse -->
-   <form action="clean.php" method="post">
-	<input type="submit" class="btn btn-danger" name="clean" value="clean" />
-	</form>
+
+
+		<p style = "margin-top : 20px;margin-left : 15px;">
+			<?php
+			/*
+			$submit = 0;
+			if (isset($_POST)) {
+				$filename = $_POST['filename'];
+				//echo('changed');
+				file_put_contents($cashed, $filename);
+				$submit = 1;
+			}*/
+			$_POST = array();
+			if(!file_exists($prefix.file_get_contents($cashed))) {
+					die("Your file doesn't exist.");
+				}
+
+			//echo "<strong>".$submit."<br/>". $prefix.$filename."</strong><br/>";?>
+
+
+			<?php
+			session_start();
+			// Name of the file
+			$_session['filename'] = $prefix.$filename;
+			// MySQL host
+			$_session['mysql_host'] = 'localhost';
+			// MySQL username
+			$_session['mysql_username'] = 'root';
+			// MySQL password
+			$_session['mysql_password'] = '';
+			// Database name
+			$_session['mysql_database'] = 'db2019';
+			//echo "<strong>".$submit."<br/>". $prefix.$filename."</strong><br/>";
+			if($submit) {
+				$submit = 0;
+				include('run_sql.php');
+			}
+			$submit = 0;
+			if (isset($_POST['submit'])){
+			$_POST = array();
+			echo '
+			window.location = window.location.pathname;
+			<script type="text/javascript">
+			location.reload();
+			</script>';
+			}
+			?>
+		</p>
+
+	</div><!-- /.navbar-collapse -->
 </div>
 
-
-<?php
-/*
-$submit = 0;
-if (isset($_POST)) {
-    $filename = $_POST['filename'];
-	//echo('changed');
-	file_put_contents($cashed, $filename);
-    $submit = 1;
-}*/
-$_POST = array();
-if(!file_exists($prefix.file_get_contents($cashed))) {
-		die("Your file doesn't exist.");
-	}
-
-//echo "<strong>".$submit."<br/>". $prefix.$filename."</strong><br/>";?>
-
 </body>
-<script>
-    // window.location = window.location.href.split("?")[0];
 
-</script>
-<?php
-session_start();
-// Name of the file
-$_session['filename'] = $prefix.$filename;
-// MySQL host
-$_session['mysql_host'] = 'localhost';
-// MySQL username
-$_session['mysql_username'] = 'root';
-// MySQL password
-$_session['mysql_password'] = '';
-// Database name
-$_session['mysql_database'] = 'db2019';
-//echo "<strong>".$submit."<br/>". $prefix.$filename."</strong><br/>";
-if($submit) {
-	$submit = 0;
-    include('run_sql.php');
-}
-$submit = 0;
-if (isset($_POST['submit'])){
-$_POST = array();
-echo '
-window.location = window.location.pathname;
-<script type="text/javascript">
-location.reload();
-</script>';
-}
-?>
 </html>
