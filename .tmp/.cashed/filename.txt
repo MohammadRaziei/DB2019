@@ -1,1 +1,1 @@
-sql.sql
+HWs/HW1/Table.sql
