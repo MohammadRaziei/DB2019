@@ -47,7 +47,7 @@
 			white-space:pre-wrap;
 		}
 		
-		.pre{
+		#pre{
 			overflow:auto;
 			border:1px solid #999;page-break-inside:avoid;
 			line-height:1.42857143;
@@ -110,7 +110,7 @@
   <!--<div class="collapse navbar-collapse" >-->
   <div class='container'>
   <div class='row'>
-  	<h2 style = "margin-left : 20px;"> hi </h2>
+  	<h2 style = "margin-left : 15px;"> Run *.sql </h2>
 
     <div class="col-sm-8 col-md-5  col-lg-5">
 
@@ -126,11 +126,13 @@
 		<form action="clean.php" method="post">
 			<input type="submit" class="btn btn-danger" name="clean" value="clean" />
 		</form>
-	
+		<small> Powered by Mohammadraziei </small>
 
 
 
-		<p class="pre" style = "margin-top : 20px;">
+
+		<p id="pre" style = "margin-top : 20px;">
+		
 			<?php
 			/*
 			$submit = 0;
@@ -176,8 +178,7 @@
 			</script>';
 			}
 			?>
-		</p>
-
+		</p> <!-- #pre-->
 	</div><!-- /.navbar-collapse -->
 	</div>
 </div>

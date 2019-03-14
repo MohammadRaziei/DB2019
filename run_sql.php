@@ -76,7 +76,7 @@ try {
             $templine = '';
         }
     }
-    exit( "Tables imported successfully");
+    exit( "Tables imported successfully.");
 }
 catch (Exception $e){
     print('Error');
