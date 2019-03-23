@@ -46,14 +46,15 @@ $mysql_password = $_session['mysql_password'];
 $mysql_database = $_session['mysql_database'];
 
 // Connect to MySQL server
-$conn = @new mysqli($mysql_host,$mysql_username,$mysql_password,$mysql_database);
+$conn = @new mysqli($mysql_host,$mysql_username,$mysql_password);
 
 // Check connection
 if ($conn->connect_errno) {
     echo "Failed to connect to MySQL: " . $conn->connect_errno;
     echo "<br/>Error: " . $conn->connect_error;
 }
-
+$conn->query('CREATE DATABASE IF NOT EXISTS '.$mysql_database.';'); // for first run
+mysqli_select_db ( $conn , $mysql_database );
 // Temporary variable, used to store current query
 $templine = '';
 // Read in entire file
