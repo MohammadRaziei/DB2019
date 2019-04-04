@@ -1,7 +1,9 @@
 % !TEX program = xelatex
-\documentclass[12pt]{article}
+\documentclass[10pt]{article}
 
 \usepackage{hyperref}
+\usepackage{enumitem}
+
 
 \usepackage{amsmath,amsfonts,amssymb}
 \usepackage{amsthm}
@@ -19,6 +21,8 @@
 \settextfont{Yas}
 \setdigitfont{Yas}
 
+
+
 \defpersianfont\nast{IranNastaliq}
 \defpersianfont\sols{XB Sols}
 \defpersianfont\naz{B Nazanin}
@@ -33,7 +37,7 @@
 %\newtheorem{test}{تمرین}
 \newtheorem{question}{سوال}
 %\newcommand{\dd}{\, \mathbf{d} }
-
+\newcommand{\prd}{\triangleright\!\!\triangleleft\,}
 
 \begin{document}
 \maketitle
@@ -68,10 +72,16 @@
 	زیرا اشتراک هر دو مجموعه ای، زیرمجموعه هریک از آن‌هاست. بنابراین کلید کاندیدای M یا N می‌تواند به تنهایی به‌عنوان کلید کاندیدای $M \cap N$ باشد.
 	
 	\item
+درست است.
 
+وقتی از مجموعه M، تعدادی عضو کاسته شود؛ همچنان می‌توان از کلید کاندیدای قبلی استفاده کرد.
 	
 	\item
-	
+درست است.
+
+چون 	در ضرب دو جدول، زوج مرتب $(m,n)$ بوجود می‌آید بطوریکه
+ $m,n \in \mathbb{N} $
+ ؛ برای همین هر رکورد با ترکیبی از کلید کاندیدای M و  N مشخص می‌شود و زیرمجموعه‌ای از این کلید نمی‌تواند کلید کاندیدا باشد. در نتیجه، کلید کاندیدای ضرب دو مجموعه است.
 	
 	
 	
@@ -79,23 +89,61 @@
 \end{enumerate}
 \end{question}
 \begin{question}
+	پاسخ:
+\begin{latin}
+\begin{enumerate}[label=\alph*)]
+\item
+
+	$$
+	\Pi_{\mathrm{date}}\left(\sigma_{\text{origin}=\mathrm{"Tehran"}}(\mathrm{Trip}))\right)
+	$$
+\item 
+	\[
+	\Pi_{\mathrm{dest}} \left(
+	\mathrm{Trip} \prd \Pi_\mathrm{trip\_id}(\sigma_\mathrm{(duration < 12)\,\wedge\,(date > 1396-06-06)}
+	(
+	\mathrm{Passnger}\prd \mathrm{Pass\_in\_trip}
+	))
+	\right)
+	\]
 	
+
+\item 
+	\[
+	\Pi_{\mathrm{Pass\_id}} \left(
+	\mathrm{Pass\_in\_Trip} \prd (\Pi_\mathrm{trip\_id}(\sigma_\mathrm{name\,=\,"A"}
+	(
+	\mathrm{Passnger}\prd \mathrm{Pass\_in\_trip}
+	))
+	\right)
+	\]
+
+
+\end{enumerate}
+\end{latin}
 \end{question}
 \begin{question}
-	
+
 \end{question}
 \begin{question}
-	
+
 \end{question}
+
+
+
+
+
+
+
 
 \section{github}\label{chpt2}
 تمامی فایل های تمرینات این درس در آدرس زیر در 
-\href{https://github.com/mohammadraziei/db2019/}{github}
+\href{https://github.com/mohammadraziei/DB2019/}{github}
 قابل دسترسی می باشد.
 
 \begin{latin}
 \begin{center}
-{\href{https://github.com/mohammadraziei/db2019/}{https://github.com/mohammadraziei/db2019/}}
+\href{https://github.com/MohammadRaziei/DB2019/tree/master/Workspace/HWs}{https://github.com/MohammadRaziei/DB2019/tree/master/Workspace/HWs}
 \end{center}
 \end{latin}
 
