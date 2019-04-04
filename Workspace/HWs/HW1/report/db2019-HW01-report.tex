@@ -1,5 +1,5 @@
 % !TEX program = xelatex
-\documentclass[10pt]{article}
+\documentclass[12pt]{article}
 
 \usepackage{hyperref}
 \usepackage{enumitem}
@@ -89,7 +89,7 @@
 \end{enumerate}
 \end{question}
 \begin{question}
-	پاسخ:
+	پاسخ :
 \begin{latin}
 \begin{enumerate}[label=\alph*)]
 \item
@@ -97,36 +97,79 @@
 	$$
 	\Pi_{\mathrm{date}}\left(\sigma_{\text{origin}=\mathrm{"Tehran"}}(\mathrm{Trip}))\right)
 	$$
+	
+	
 \item 
 	\[
 	\Pi_{\mathrm{dest}} \left(
-	\mathrm{Trip} \prd \Pi_\mathrm{trip\_id}(\sigma_\mathrm{(duration < 12)\,\wedge\,(date > 1396-06-06)}
+	\mathrm{Trip} \prd \Pi_\mathrm{trip\_id}(\sigma_\mathrm{name\,=\,"A"}
 	(
-	\mathrm{Passnger}\prd \mathrm{Pass\_in\_trip}
+	\mathrm{Passenger}\prd \mathrm{Pass\_in\_trip}
+	))
+	\right)
+	\]
+	
+	
+\item 
+	\[
+	\Pi_{\mathrm{Pass\_id}} \left(
+	\mathrm{Pass\_in\_Trip} \prd \Pi_\mathrm{trip\_id}(\sigma_\mathrm{(duration < 12)\,\wedge\,(date > 1396-06-06)}
+	(
+	\mathrm{Trip}
 	))
 	\right)
 	\]
 	
 
-\item 
-	\[
-	\Pi_{\mathrm{Pass\_id}} \left(
-	\mathrm{Pass\_in\_Trip} \prd (\Pi_\mathrm{trip\_id}(\sigma_\mathrm{name\,=\,"A"}
-	(
-	\mathrm{Passnger}\prd \mathrm{Pass\_in\_trip}
-	))
-	\right)
-	\]
-
-
 \end{enumerate}
 \end{latin}
 \end{question}
-\begin{question}
 
+\begin{question}
+	پاسخ :
+%\begin{flushright}
+\begin{enumerate}
+	\item[.a]
+	نتیجه این پرس‌و‌جو نام تمام تهیه کنندگانی است که شهر آن‌ها با تهیه‌کننده‌ای با شماره 8 یکی باشد.
+		
+	\item[.b]
+	
+	$$
+	\Pi_{\mathrm{s\_id}}\left(\sigma_{\text{s\_city}=\mathrm{"Tehran"}}(\mathrm{Producer}))\right)
+	$$
+	
+	
+	\item[.c]
+	\[
+	\Pi_{\mathrm{s\_name}} \left(
+	\mathrm{Producer} \prd \Pi_\mathrm{s\_id}(\sigma_\mathrm{p\_color\,=\,"blue"}
+	(
+	\mathrm{Piece}\prd \mathrm{Producer}
+	))
+	\right)
+	\]
+	
+	
+	\item[.d]
+	\[
+	\Pi_{\mathrm{s\_name}} \left(
+	\sigma_\mathrm{T.s\_name\,\ne\,C.d\_name}(\rho_T( \mathrm{Producer}
+	\prd \mathrm{Producer}
+	)
+	\times \rho_C(c.)
+	)
+	\right)
+	\]
+	
+	در این پرس‌و‌جو از نتیجه قسمت قبلی سوال با همان نام استفاده شده است.
+	 (c.)
+	.  برای اینکه مطمئن شویم تولید کننده حداقل یک محصول تولید کرده، از natural join دو جدول Produce و Producer استفاده کرده‌ایم.
+	
+\end{enumerate}
+%\end{flushright}
 \end{question}
 \begin{question}
-
+	فایل های مورد نظر در ضمیمه آورده شده اند.
 \end{question}
 
 
@@ -148,4 +191,10 @@
 \end{latin}
 
 
+
+\begin{center}
+\vspace{1.5cm}
+\huge
+پایان
+\end{center}
 \end{document}
