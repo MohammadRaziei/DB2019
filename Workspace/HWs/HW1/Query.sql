@@ -1,8 +1,8 @@
----------# 1 #---------
+-- -------# 1 #---------
 select *
 from Product;
 
----------# 2 #---------
+-- -------# 2 #---------
 select *
 from Product
 where product_id not in (
@@ -10,7 +10,7 @@ where product_id not in (
 	from Rating
     );
     
----------# 3 #---------
+-- -------# 3 #---------
 select name_, gender
 from User_
 where user_id in (
@@ -25,7 +25,7 @@ where user_id in (
 		)
 	);
     
----------# 4 #---------
+-- -------# 4 #---------
 select P.name_ as product_name, C.name_ as category_name
 from Product as P 
 inner join Category as C
@@ -36,7 +36,7 @@ where product_id in (
 	where rate > 4
 	);
 
----------# 5 #---------
+-- -------# 5 #---------
 select P.product_id, P.name_, sum(price*quantity) as total
 from Product as P 
 		inner join Order_ as O
@@ -44,7 +44,7 @@ from Product as P
 group by P.product_id
 having total > 100000;
 
----------# 6 #---------
+-- -------# 6 #---------
 select user_id, sum(price*quantity) as total
 from
 (select quantity, product_id, user_id
@@ -55,7 +55,7 @@ on (P.product_id = T.product_id)
 group by user_id
 having total > 100000;
 
----------# 7 #---------
+-- -------# 7 #---------
 select U.user_id, name_
 from User_ as U
 inner join (
@@ -73,7 +73,7 @@ inner join (
 	) as T2
 on (T2.user_id = U.user_id);
 
----------# 8 #---------
+-- -------# 8 #---------
 select U.user_id , U.name_, total
 from(
 	select user_id , sum(quantity*price) as total
@@ -92,7 +92,7 @@ from(
 inner join User_ as U
 on (U.user_id = T1.user_id);
 
----------# 9 #---------
+-- -------# 9 #---------
 select user_id, name_
 from User_
 where user_id in (
@@ -115,7 +115,7 @@ and user_id	in (
 		where C.name_ = "book")
 	);
 
----------# 11 #---------
+-- -------# 11 #---------
 select P.product_id, name_, sum(quantity) as total_units
 from Order_ as O inner join Product as P
 using(product_id)
@@ -123,7 +123,7 @@ group by product_id
 order by total_units desc
 limit 1;
 
----------# 12 #---------
+-- -------# 12 #---------
 select category_id, category_name , sum(quantity) as total_units
 from Order_ as O
 inner join
@@ -136,7 +136,7 @@ group by category_id
 order by total_units desc
 limit 1;
 
----------# 13 #---------
+-- -------# 13 #---------
 select P.product_id, name_, sum(quantity) as total_units
 from Order_ as O inner join Product as P
 using(product_id)
@@ -144,7 +144,7 @@ group by product_id
 order by total_units
 limit 3;
 
----------# 14 #---------
+-- -------# 14 #---------
 select T.user_id, T.name_, T.total_buy
 from (
 	select O.user_id, U.name_, sum(quantity*price) as total_buy
@@ -168,7 +168,7 @@ join (
 where T.total_buy < M.total_buy
 limit 1;
 
----------# 15 #---------
+-- -------# 15 #---------
 select R.user_id, R.rating
 from (
 	select user_id, count(*) as rating
@@ -186,7 +186,7 @@ join(
 where R.rating < M.rating
 limit 1;
 
----------# 16 #---------
+-- -------# 16 #---------
 select user_id , max(MX.max_date - MN.min_date) as timestamp_difference
 from(
 	select user_id, max(timestamp_) as max_date
@@ -203,7 +203,7 @@ group by user_id
 order by timestamp_difference desc
 limit 1;
 
----------# 17 #---------
+-- -------# 17 #---------
 select user_id
 from (
 	select T1.user_id, sum(T1.price * T1.quantity) as total_buy
