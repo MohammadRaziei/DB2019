@@ -1,1 +1,1 @@
-HWs/HW1/Table.sql
+HWs/HW1/Query.sql
